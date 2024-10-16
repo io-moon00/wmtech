@@ -1,0 +1,71 @@
+{% load compress %} {% load static %} 
+
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% compress css %}
+        <link rel="stylesheet" href="{% static 'src/output.css' %}" />
+    {% endcompress %}
+
+    <title>Wenger Metalltechnik</title>
+</head>
+<body>
+    <!-- ========== HEADER ========== -->
+    {% include 'template_parts/header.html' %}
+    <!-- ========== END HEADER ========== -->
+    {% block main %}
+
+    {% endblock %}
+<!-- ========== FOOTER ========== -->
+<footer class="mt-auto w-full py-10 px-4 sm:px-6 lg:px-8 mx-auto bg-gray-900">
+  
+  <div class="grid grid-cols-3 max-w-[85rem] mx-auto">
+    <div class="text-start mt-10">
+      <h3 class="mb-6 text-sm font-semibold uppercase text-white">Partner</h3>
+        <ul>
+          <li><a class="text-gray-500 hover:underline" href="https://metall-classics.ch/">Metall Classics</a></li>
+          <li><a class="text-gray-500 hover:underline" href="https://hexacoding.ch/">Hexacoding</a></li>
+        </ul>
+    </div>
+    <div class="text-center">
+      <div class="flex justify-center">
+        <img class="h-16" src="../../media/public/logo.svg">
+      </div>
+  
+
+      <div class="mt-3">
+        <h3 class="mb-2 mt-4 text-sm font-semibold uppercase text-white">Wenger Metalltechnik</h3>
+        <p class="text-gray-500">Hauptstrasse 89</p>
+        <p class="text-gray-500">4437 Waldenburg</p>
+      </div>
+      <h3 class="mt-4 text-sm font-semibold uppercase text-white">Kontakt</h3>
+      <div>
+        <p class="text-gray-500"><a href="mailto:anfrage@wenger-metalltechnik.ch" class="font-semibold hover:underline">anfrage@wenger-metalltechnik.ch</a></p>
+        <p class="text-gray-500"><a href="tel:+41796685678" class="font-semibold hover:underline">079 668 56 78</a></p>
+      </div>
+
+      <p class="text-gray-500 mt-6">
+        © {% now "Y" %} Wenger Metalltechnik.
+      </p>
+      <div class="mt-3">
+        <p class="text-gray-500">Made by <a href="https://hexacoding.ch/" class="font-semibold hover:underline">Hexacoding</a></p>
+      </div>
+    </div>
+    <div class="text-end justify-end items-end mt-10">
+      <h3 class="mb-6 text-sm font-semibold uppercase text-white">Rechtliches</h3>
+      <ul>
+        <li><a class="text-gray-500 hover:underline" href="#">Impressum</a></li>
+        <li><a class="text-gray-500 hover:underline" href="#">Datenschutzerklärung</a></li>
+      </ul>
+    </div>
+</div>
+  
+  <!-- End Grid -->
+</footer>
+<!-- ========== END FOOTER ========== -->
+    <script src="{% static 'node_modules/flowbite/dist/flowbite.min.js' %}"></script>
+    <script src="{% static 'node_modules/preline/dist/preline.js' %}"></script>
+</body>
+</html>

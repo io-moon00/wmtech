@@ -1,0 +1,68 @@
+<section id="contact" class="bg-white mt-32">
+    <div class="relative bg-gray-700 bg-blend-multiply">
+        <!-- Replace background image with an img tag -->
+        <img src="{{ contact_section.background_image.url }}" 
+             alt="Contact Background"
+             class="w-full h-full object-cover absolute inset-0 z-0">
+
+        <!-- Content container, with z-index to appear above the image -->
+        <div class="relative px-4 lg:pt-24 pt-8 pb-72 lg:pb-80 mx-auto w-full text-center lg:px-6 bg-gray-900 bg-opacity-90">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-white">{{ contact_section.title }}</h2>
+            <p class="mb-16 font-light text-gray-400 sm:text-xl">{{ contact_section.subtitle }}</p>
+        </div> 
+    </div>
+    <div class="py-16 px-4 mx-auto -mt-96 max-w-screen-xl sm:py-24 lg:px-6 z-10 flex flex-col relative">
+        <form class="grid grid-cols-1 gap-8 p-6 mx-auto mb-16 max-w-screen-md bg-white rounded-lg border border-gray-200 shadow-sm lg:mb-28 sm:grid-cols-2">
+            <div>
+                <label for="id_prename" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Vorname</label>
+                {{ form.prename }}
+            </div>
+            <div>
+                <label for="id_name" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Name</label>
+                {{ form.name }}
+            </div>
+            <div>
+                <label for="id_email" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Email</label>
+                {{ form.email }}
+            </div>
+            <div>
+                <label for="id_phone" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Telefonnummer:</label>
+                {{ form.phone }}
+            </div>
+            <div class="sm:col-span-2">
+                <label for="id_message" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Nachricht</label>
+                {{ form.message }}
+                <p class="mt-4 text-sm text-gray-500">Mit dem Absenden dieses Formulars erklären Sie sich mit unserer <a href="#" class="text-main underline">Datenschutzrichtlinie</a> einverstanden, in der erläutert wird, wie wir Ihre persönlichen Daten erfassen.</p>
+            </div>
+            <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-main sm:w-fit hover:bg-main">Nachricht senden</button>
+        </form>
+        <div class="space-y-8 text-center md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+            <div>
+                <div class="flex justify-center items-center mx-auto mb-4 w-10 h-10 bg-gray-100 rounded-lg lg:h-16 lg:w-16">
+                    <svg class="w-5 h-5 text-gray-600 lg:w-8 lg:h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                </div>
+                <p class="mb-2 text-xl font-bold">Email:</p>
+                <p class="mb-3 text-gray-500">Schreiben Sie uns eine E-Mail, wenn Sie allgemeine Fragen haben.</p>
+                <a href="mailto:anfrage@wenger-metalltechnik.ch" class="font-semibold text-main hover:underline">anfrage@wenger-metalltechnik.ch</a>
+            </div>
+            <div>
+                <div class="flex justify-center items-center mx-auto mb-4 w-10 h-10 bg-gray-100 rounded-lg lg:h-16 lg:w-16">
+                    <svg class="w-5 h-5 text-gray-600 lg:w-8 lg:h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                </div>
+                <p class="mb-2 text-xl font-bold">Telefon:</p>
+                <p class="mb-3 text-gray-500">Rufen Sie uns an und sprechen Sie direkt mit einem Mitglied unseres Teams. Wir helfen Ihnen immer gerne weiter.</p>
+                <a href="tel:+41796685678" class="font-semibold hover:underline text-main">079 668 56 78</a>
+            </div>
+            <div>
+                <div class="flex justify-center items-center mx-auto mb-4 w-10 h-10 bg-gray-100 rounded-lg lg:h-16 lg:w-16">
+                    <svg class="w-5 h-5 text-gray-600 lg:w-8 lg:h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"></path></svg>
+                </div>
+                <p class="mb-2 text-xl font-bold">Adresse:</p>
+                <p class="text-gray-500">Wenger Metalltechnik</p>
+                <p class="text-gray-500">Hauptstrasse 89</p>
+                <p class="text-gray-500">4437 Waldenburg</p>
+                <a href="https://maps.app.goo.gl/zQypogQ3iaE4ni9i7" target="_blank" class="inline-flex py-2 px-4 mt-4 text-sm font-medium text-center rounded-lg border text-main border-main hover:text-white hover:bg-main focus:ring-4 focus:outline-none focus:ring-main-light">Google Maps</a>
+            </div>
+        </div>
+    </div>
+</section>

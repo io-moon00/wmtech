@@ -1,0 +1,34 @@
+{% extends 'page.html' %}
+
+{% block main %}
+<div class="bg-gray-900 h-28"></div>
+<section class="bg-white antialiased mt-12">
+    <div class="max-w-screen-xl px-4 py-8 mx-auto lg:px-6">
+        <section class="bg-white">
+            <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+                <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                    <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ product.name }}</h2>
+                    <p class="mt-4">{{ product.description }}</p>
+                </div>
+                <div>
+                    <img class="w-full aspect-[16/9] rounded-lg" src="{{ product.card_image.image.url }}" alt="office content 1">
+                </div>
+            </div>
+        </section>
+
+        <div class="mt-16">
+        <!-- Image Grid -->
+            <h3 class="text-base font-semibold leading-6 text-gray-900 mb-6 border-b border-gray-200 pb-5">Gallerie</h3>
+            <div class="gap-4 mt-8 sm:grid sm:grid-cols-4 sm:mt-12">
+                {% for image in images %}
+                    {% if forloop.counter|divisibleby:6 or forloop.counter|divisibleby:4 or forloop.counter|divisibleby:3 or forloop.counter|divisibleby:2 %}
+                        <img class="col-span-1 w-full h-72 object-cover rounded-lg" src="{{ image.image.url }}" alt="">
+                    {% else %}
+                        <img class="col-span-2 w-full h-72 object-cover mb-4 sm:mb-0 rounded-lg" src="{{ image.image.url }}" alt="">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
