@@ -14,6 +14,7 @@ def home(request):
     feature_section = Section.objects.get(section='features')
     contact_section = Section.objects.get(section='contact')
     project_section = Section.objects.get(section='projects')
+    about_section = Section.objects.get(section='about')
     submitted = False
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -33,7 +34,7 @@ def home(request):
         form = ContactForm()
         if 'submitted' in request.GET:
             submitted = True
-    return render(request, 'home.html', {'products': products, 'features': features, 'form': form, 'feature_section': feature_section, 'contact_section': contact_section, 'project_section': project_section,'submitted': submitted})
+    return render(request, 'home.html', {'products': products, 'features': features, 'form': form, 'feature_section': feature_section, 'contact_section': contact_section, 'project_section': project_section,'about_section': about_section,'submitted': submitted})
 
 def single_product(request, pk):
     product = Product.objects.get(pk=pk)

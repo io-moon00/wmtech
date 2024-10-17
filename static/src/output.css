@@ -1418,6 +1418,22 @@ input:checked + .toggle-bg {
   aspect-ratio: 801/1036;
 }
 
+.aspect-\[3\/1\] {
+  aspect-ratio: 3/1;
+}
+
+.aspect-\[3\/2\] {
+  aspect-ratio: 3/2;
+}
+
+.aspect-\[\/2\] {
+  aspect-ratio: /2;
+}
+
+.aspect-\[2\/2\] {
+  aspect-ratio: 2/2;
+}
+
 .size-3\.5 {
   width: 0.875rem;
   height: 0.875rem;
@@ -1581,6 +1597,18 @@ input:checked + .toggle-bg {
 
 .max-w-xl {
   max-width: 36rem;
+}
+
+.max-w-lg {
+  max-width: 32rem;
+}
+
+.max-w-md {
+  max-width: 28rem;
+}
+
+.max-w-sm {
+  max-width: 24rem;
 }
 
 .flex-1 {
