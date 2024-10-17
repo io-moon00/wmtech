@@ -1,0 +1,10 @@
+Du hast eine Nachricht über das Kontaktformular der Webseite Wenger Metalltechnik erhalten!
+
+Die Nachricht ist von: 
+      Vorname: {{ prename }}
+      Nachname: {{ name }}
+      E-mail: {{ email }}
+      Phone: {{ phone }}
+  
+  	Nachricht:
+    {{ message }}

@@ -1,0 +1,17 @@
+{% extends 'page.html' %}
+{% load markdown_extras %}
+{% block main %}
+<div class="h-[88px] bg-gray-900">
+
+</div>
+<div class="max-w-screen-xl px-4 py-8 mx-auto lg:px-6 sm:py-16 lg:py-24">
+    <div class="max-w-3xl">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4">{{ page.title }}</h2>
+        <div class="h3:text-main h2:text-main h2:text-xl h2:font-bold p:mb-3">
+            {{ page.content | convert_markdown | safe }}
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}

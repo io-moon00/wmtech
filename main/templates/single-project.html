@@ -1,7 +1,6 @@
-{% extends 'page.html' %}
+{% extends 'page.html' %}{% load static %} 
 
 {% block main %}
-<div class="bg-gray-900 h-28"></div>
 <section class="bg-white antialiased mt-12">
     <div class="max-w-screen-xl px-4 py-8 mx-auto lg:px-6">
         <section class="bg-white">
@@ -11,7 +10,7 @@
                     <p class="mt-4">{{ product.description }}</p>
                 </div>
                 <div>
-                    <img class="w-full aspect-[16/9] rounded-lg" src="{{ product.card_image.image.url }}" alt="office content 1">
+                    <img class="w-full mt-10 aspect-[16/9] rounded-lg" src="{{ product.card_image.image.url }}" alt="office content 1">
                 </div>
             </div>
         </section>
@@ -19,16 +18,20 @@
         <div class="mt-16">
         <!-- Image Grid -->
             <h3 class="text-base font-semibold leading-6 text-gray-900 mb-6 border-b border-gray-200 pb-5">Gallerie</h3>
-            <div class="gap-4 mt-8 sm:grid sm:grid-cols-4 sm:mt-12">
+            <div class="gap-4 mt-8 grid sm:grid-cols-4 sm:mt-12 grid-cols-2">
                 {% for image in images %}
                     {% if forloop.counter|divisibleby:6 or forloop.counter|divisibleby:4 or forloop.counter|divisibleby:3 or forloop.counter|divisibleby:2 %}
-                        <img class="col-span-1 w-full h-72 object-cover rounded-lg" src="{{ image.image.url }}" alt="">
+                        <a class="sm:col-span-1 w-full h-72 object-cover rounded-lg" data-lightbox="{{ product.name }}" href="{{ image.image.url }}"><img class="w-full h-72 object-cover rounded-lg" src="{{ image.image.url }}" alt=""></a>
                     {% else %}
-                        <img class="col-span-2 w-full h-72 object-cover mb-4 sm:mb-0 rounded-lg" src="{{ image.image.url }}" alt="">
+                    <a class="sm:col-span-2 w-full h-72 object-cover rounded-lg" data-lightbox="{{ product.name }}" href="{{ image.image.url }}"><img data-lightbox="{{ product.name }}" class="sm:col-span-2 w-full h-72 object-cover rounded-lg" src="{{ image.image.url }}" alt=""></a>
                     {% endif %}
                 {% endfor %}
             </div>
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'node_modules/lightbox2/src/js/lightbox.js' %}"></script>
 {% endblock %}

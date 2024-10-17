@@ -1,15 +1,17 @@
 {% load compress %} {% load static %} 
 
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="de">
+<html class="scroll-smooth scroll-py-48" lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% compress css %}
         <link rel="stylesheet" href="{% static 'src/output.css' %}" />
     {% endcompress %}
-
+    <link rel="stylesheet" href="../../static/src/index.css">
+    <link rel="stylesheet" href="../../static/node_modules/lightbox2/dist/css/lightbox.css">
     <title>Wenger Metalltechnik</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <!-- ========== HEADER ========== -->
@@ -21,8 +23,8 @@
 <!-- ========== FOOTER ========== -->
 <footer class="mt-auto w-full py-10 px-4 sm:px-6 lg:px-8 mx-auto bg-gray-900">
   
-  <div class="grid grid-cols-3 max-w-[85rem] mx-auto">
-    <div class="text-start mt-10">
+  <div class="grid md:grid-cols-3 grid-cols-1 gap-y-10 max-w-[85rem] mx-auto">
+    <div class="md:text-start text-center mt-10">
       <h3 class="mb-6 text-sm font-semibold uppercase text-white">Partner</h3>
         <ul>
           <li><a class="text-gray-500 hover:underline" href="https://metall-classics.ch/">Metall Classics</a></li>
@@ -53,11 +55,11 @@
         <p class="text-gray-500">Made by <a href="https://hexacoding.ch/" class="font-semibold hover:underline">Hexacoding</a></p>
       </div>
     </div>
-    <div class="text-end justify-end items-end mt-10">
+    <div class="md:text-end text-center justify-end items-end mt-10">
       <h3 class="mb-6 text-sm font-semibold uppercase text-white">Rechtliches</h3>
       <ul>
-        <li><a class="text-gray-500 hover:underline" href="#">Impressum</a></li>
-        <li><a class="text-gray-500 hover:underline" href="#">Datenschutzerklärung</a></li>
+        <li><a class="text-gray-500 hover:underline" href="{% url 'impressum' %}">Impressum</a></li>
+        <li><a class="text-gray-500 hover:underline" href="{% url 'privacy_policy' %}">Datenschutzerklärung</a></li>
       </ul>
     </div>
 </div>
@@ -65,7 +67,10 @@
   <!-- End Grid -->
 </footer>
 <!-- ========== END FOOTER ========== -->
+    <script src="{% static 'index.js' %}"></script>
     <script src="{% static 'node_modules/flowbite/dist/flowbite.min.js' %}"></script>
     <script src="{% static 'node_modules/preline/dist/preline.js' %}"></script>
+    {% block scripts %}
+    {% endblock %}
 </body>
 </html>

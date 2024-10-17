@@ -1,0 +1,28 @@
+html{
+    scroll-behavior: smooth;
+    scroll-padding-top: 30px;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #1B2741;
+    border-radius: 2px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1B2741;
+  }
+
+  .login-logo img{
+    width: 200px;
+  }

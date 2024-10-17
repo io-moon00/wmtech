@@ -23,6 +23,10 @@ import main.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main.views.home, name='home'),
+    path('login/', main.views.login, name='login'),
+    path('galerie/', main.views.gallery, name='gallery'),
+    path('impressum/', main.views.impressum, name='impressum'),
+    path('privacy-policy/', main.views.privacy_policy, name='privacy_policy'),
     path('produkt/<int:pk>', main.views.single_product, name='single_product'),
 
 ]

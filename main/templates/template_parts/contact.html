@@ -1,4 +1,4 @@
-<section id="contact" class="bg-white mt-32">
+<section class="bg-white mt-32">
     <div class="relative bg-gray-700 bg-blend-multiply">
         <!-- Replace background image with an img tag -->
         <img src="{{ contact_section.background_image.url }}" 
@@ -6,13 +6,30 @@
              class="w-full h-full object-cover absolute inset-0 z-0">
 
         <!-- Content container, with z-index to appear above the image -->
-        <div class="relative px-4 lg:pt-24 pt-8 pb-72 lg:pb-80 mx-auto w-full text-center lg:px-6 bg-gray-900 bg-opacity-90">
+        <div id="contact"  class="relative px-4 lg:pt-24 pt-8 pb-72 lg:pb-80 mx-auto w-full text-center lg:px-6 bg-gray-900 bg-opacity-90">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-white">{{ contact_section.title }}</h2>
             <p class="mb-16 font-light text-gray-400 sm:text-xl">{{ contact_section.subtitle }}</p>
         </div> 
     </div>
     <div class="py-16 px-4 mx-auto -mt-96 max-w-screen-xl sm:py-24 lg:px-6 z-10 flex flex-col relative">
-        <form class="grid grid-cols-1 gap-8 p-6 mx-auto mb-16 max-w-screen-md bg-white rounded-lg border border-gray-200 shadow-sm lg:mb-28 sm:grid-cols-2">
+        {% if submitted %}
+                    <div class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32 rounded-3xl shadow-2xl">
+                        <div class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl" aria-hidden="true">
+                          <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#1B2741] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                        </div>
+                        <div class="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu" aria-hidden="true">
+                          <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#1B2741] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                        </div>
+                        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                          <div class="mx-auto max-w-2xl lg:mx-0">
+                            <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Anfrage gesendet</h2>
+                            <p class="mt-6 text-lg leading-8 text-gray-300">Vielen Dank für Ihre Anfrage! Wir werden uns so schnell wie möglich bei Ihnen melden.</p>
+                          </div>
+                        </div>
+                      </div>
+                {% else %}
+        <form method="POST" class="grid grid-cols-1 gap-8 p-6 mx-auto mb-16 max-w-screen-md bg-white rounded-lg border border-gray-200 shadow-sm lg:mb-28 sm:grid-cols-2">
+            {% csrf_token %}
             <div>
                 <label for="id_prename" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Vorname</label>
                 {{ form.prename }}
@@ -24,19 +41,28 @@
             <div>
                 <label for="id_email" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Email</label>
                 {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="text-red-600 text-sm mt-1">
+                        {% for error in form.email.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
             <div>
-                <label for="id_phone" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Telefonnummer:</label>
+                <label for="id_phone" class="block mb-2 text-sm font-medium text-gray-900">Telefonnummer:</label>
                 {{ form.phone }}
             </div>
             <div class="sm:col-span-2">
                 <label for="id_message" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Nachricht</label>
                 {{ form.message }}
-                <p class="mt-4 text-sm text-gray-500">Mit dem Absenden dieses Formulars erklären Sie sich mit unserer <a href="#" class="text-main underline">Datenschutzrichtlinie</a> einverstanden, in der erläutert wird, wie wir Ihre persönlichen Daten erfassen.</p>
+                <p class="mt-4 text-sm text-gray-500">Mit dem Absenden dieses Formulars erklären Sie sich mit unserer <a href="{% url 'privacy_policy' %}" class="text-main underline">Datenschutzrichtlinie</a> einverstanden, in der erläutert wird, wie wir Ihre persönlichen Daten erfassen.</p>
             </div>
+            {{ form.captcha }}
             <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-main sm:w-fit hover:bg-main">Nachricht senden</button>
         </form>
-        <div class="space-y-8 text-center md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+        {% endif %}
+        <div class="space-y-8 text-center md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0 {% if submitted %}mt-16{% endif %}">
             <div>
                 <div class="flex justify-center items-center mx-auto mb-4 w-10 h-10 bg-gray-100 rounded-lg lg:h-16 lg:w-16">
                     <svg class="w-5 h-5 text-gray-600 lg:w-8 lg:h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>

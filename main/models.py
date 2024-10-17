@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import mark_safe
 
 # Create your models here
 
@@ -18,6 +19,10 @@ class Product(models.Model):
     
     def get_images(self):
         return Image.objects.filter(product=self)
+    
+    class Meta:
+        verbose_name_plural = "Projects"
+        verbose_name = "Project"
 
 
 class Image(models.Model):
@@ -26,6 +31,9 @@ class Image(models.Model):
     
     def __str__(self):
         return f'{self.product.name} - {self.pk}'
+    
+    def img_preview(self): 
+        return mark_safe(f'<img src = "{self.image.url}" width = "200"/>')
 
 class Page(models.Model):
     PAGES = [
@@ -33,17 +41,24 @@ class Page(models.Model):
         ('impressum', 'Impressum'),
         ('legal', 'Datenschutzerklärung'),
     ]
-    image = models.ImageField(upload_to='pages/', null=True)
     title = models.CharField(max_length=200)
     content = models.TextField(null=True)
     page = models.CharField(max_length=10, choices=PAGES)
 
+    def __str__(self):
+        return self.title
+
+
 class Feature(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
+    sequence = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        ordering = ['sequence']
     
 class Section(models.Model):
     SECTIONS = [
@@ -59,3 +74,6 @@ class Section(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def img_preview(self): 
+        return mark_safe(f'<img src = "{self.background_image.url}" width = "200"/>')

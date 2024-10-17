@@ -25,11 +25,11 @@
               <div class="mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
                 <div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
                   <div class="relative w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
-                    <h1 class="text-4xl font-bold tracking-tight text-gray-200 sm:text-6xl">Wenger Metalltechnik</h1>
-                    <p class="mt-6 text-lg leading-8 text-gray-400 sm:max-w-md lg:max-w-none">Ihr Partner für hochwertige Metallverarbeitung und innovative Lösungen – von der Idee bis zum Endprodukt.</p>
+                    <h1 class="text-4xl font-bold tracking-tight text-gray-200 sm:text-6xl">{{ page.title }}</h1>
+                    <p class="mt-6 text-lg leading-8 text-gray-400 sm:max-w-md lg:max-w-none">{{ page.content }}</p>
                     <div class="mt-10 flex items-center gap-x-6">
-                      <a href="#" class="rounded-md bg-gray-200 px-3.5 py-2.5 text-sm font-semibold text-main shadow-sm hover:bg-white">Kontakt</a>
-                      <a href="#" class="text-sm font-semibold leading-6 text-gray-300 hover:text-white">Projekte <span aria-hidden="true">→</span></a>
+                      <a href="{% url 'home' %}#contact" class="rounded-md bg-gray-200 px-3.5 py-2.5 text-sm font-semibold text-main shadow-sm hover:bg-white">Kontakt</a>
+                      <a href="{% url 'home' %}#projects" class="text-sm font-semibold leading-6 text-gray-300 hover:text-white">Projekte <span aria-hidden="true">→</span></a>
                     </div>
                   </div>
                   <div class="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
@@ -71,11 +71,11 @@
 
       {% include 'template_parts/about.html' %}
   
-      <section class="bg-white antialiased mt-24">
+      <section id="projects" class="bg-white antialiased mt-24">
         <div class="max-w-screen-xl px-4 py-8 mx-auto lg:px-6 sm:py-16 lg:py-24">
             <div class="max-w-2xl mx-auto text-center">
                 <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ project_section.title }}</h2>
-                <p class="mt-4 text-base font-normal text-gray-500 sm:text-xl dark:text-gray-400">
+                <p class="mt-4 text-base font-normal text-gray-500 sm:text-xl">
                 {{ project_section.subtitle }}
                 </p>
             </div>
@@ -98,7 +98,7 @@
                                     {{ product.description }}
                                 </p>
                                 <a href="{% url 'single_product' product.id %}" title=""
-                                class="text-white bg-main justify-center hover:bg-primary-800 inline-flex items-center  focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                class="text-white bg-main justify-center hover:bg-primary-800 inline-flex items-center  focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                 role="button">
                                 Details
                                 <svg aria-hidden="true" class="w-5 h-5 ml-2 -mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -120,14 +120,14 @@
                     
                         <div class="w-full space-y-6 lg:max-w-lg shrink-0 xl:max-w-2xl lg:order-1">
                             <div class="space-y-3">
-                                <h3 class="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl dark:text-white">
+                                <h3 class="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl">
                                     {{ product.name }}
                                 </h3>
                                 <p class="text-base font-normal text-gray-500 sm:text-lg dark:text-gray-400">
                                     {{ product.description }}
                                 </p>
                                 <a href="{% url 'single_product' product.id %}" title=""
-                                class="text-white bg-main justify-center hover:bg-primary-800 inline-flex items-center  focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                class="text-white bg-main justify-center hover:bg-primary-800 inline-flex items-center  focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                 role="button">
                                 Details
                                 <svg aria-hidden="true" class="w-5 h-5 ml-2 -mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
